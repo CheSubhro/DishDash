@@ -43,6 +43,23 @@ export const loginValidator = [
     .notEmpty().withMessage('Password is required')
 ];
 
+export const categoryValidator = [
+  body('name')
+    .trim()
+    .notEmpty().withMessage('Category name is required')
+    .isLength({ min: 2 }).withMessage('Category name must be at least 2 characters long'),
+  
+  body('type')
+    .optional()
+    .isIn(['main', 'sub']).withMessage('Type must be either main or sub'),
+
+  body('parentCategory')
+    .if(body('type').equals('sub'))
+    .notEmpty().withMessage('Parent category ID is required for sub-categories')
+    .isMongoId().withMessage('Invalid Parent Category ID format')
+];
+
+
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

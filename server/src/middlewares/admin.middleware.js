@@ -10,4 +10,3 @@ export const verifyAdmin = asyncHandler(async (req, res, next) => {
     }
     next();
 });
-

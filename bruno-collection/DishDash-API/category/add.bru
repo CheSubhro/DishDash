@@ -1,0 +1,28 @@
+meta {
+  name: add
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/categories/add
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Starters & Snacks",
+    "type": "sub",
+    "parentCategory": "6a5e28ff9890a96533e81fd9"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

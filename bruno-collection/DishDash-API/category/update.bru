@@ -1,0 +1,23 @@
+meta {
+  name: update
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseUrl}}/categories/edit/6a5e28ff9890a96533e81fd9
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Veg",
+    "type": "main"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

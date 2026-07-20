@@ -1,0 +1,16 @@
+meta {
+  name: getall
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/categories/all
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
