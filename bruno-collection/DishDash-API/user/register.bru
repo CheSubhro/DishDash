@@ -1,0 +1,25 @@
+meta {
+  name: register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/users/register
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  fullName: John Doe @contentType(Text)
+  email: john.doe@example.com @contentType(Text)
+  username: johndoe @contentType(Text)
+  password: MySecurePassword123 @contentType(Text)
+  avatar: @file(C:\Users\CHE\Downloads\Gemini_Generated_Image_5z0po15z0po15z0p.png) @contentType(image/png)
+  coverImage: @file(C:\Users\CHE\Downloads\Gemini_Generated_Image_qvunpnqvunpnqvun.png) @contentType(image/png)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

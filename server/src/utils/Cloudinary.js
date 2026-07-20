@@ -1,4 +1,5 @@
 
+
 import { v2 as cloudinary } from "cloudinary"
 import fs from 'fs'
 
@@ -27,11 +28,24 @@ const uploadOnCloudinary = async (localFilePath) => {
         return response;
         
     } catch (error) {
-        
+        // console.log("Cloudinary Upload Error:", error);
         fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failed
         return null;
     }
 
 }
 
-export { uploadOnCloudinary }
+const deleteFromCloudinary = async (publicUrl) => {
+    try {
+        if (!publicUrl) return null;
+        
+        const publicId = publicUrl.split('/').pop().split('.')[0];
+        
+        const response = await cloudinary.uploader.destroy(publicId);
+        return response;
+    } catch (error) {
+        return null;
+    }
+};
+
+export { uploadOnCloudinary, deleteFromCloudinary }

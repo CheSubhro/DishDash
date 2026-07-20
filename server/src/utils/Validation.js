@@ -1,15 +1,52 @@
 
-// npm i express-validator
+import { body, validationResult } from 'express-validator';
+import { ApiError } from './ApiError.js'; 
+import HttpStatus from './HttpStatus.js';
 
-import { validationResult } from 'express-validator';
+export const registerValidator = [
+  body('fullName')
+    .trim()
+    .notEmpty().withMessage('Full name is required')
+    .isLength({ min: 3 }).withMessage('Full name must be at least 3 characters long'),
+    
+  body('email')
+    .trim()
+    .notEmpty().withMessage('Email is required')
+    .isEmail().withMessage('Please provide a valid email address'),
+    
+  body('username')
+    .trim()
+    .notEmpty().withMessage('Username is required')
+    .isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
+    
+  body('password')
+    .notEmpty().withMessage('Password is required')
+    .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long'),
 
-// Middleware to handle validation errors
-const validate = (req, res, next) => {
+  body('role')
+    .optional()
+    .isIn(['user', 'admin']).withMessage('Role must be either user or admin')
+];
+
+export const loginValidator = [
+  body('username')
+    .if(body('email').not().exists())
+    .trim()
+    .notEmpty().withMessage('Username or email is required'),
+    
+  body('email')
+    .if(body('username').not().exists())
+    .trim()
+    .isEmail().withMessage('Please provide a valid email address'),
+
+  body('password')
+    .notEmpty().withMessage('Password is required')
+];
+
+export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    throw new ApiError(HttpStatus.BAD_REQUEST, "Validation Failed", errors.array());
   }
   next();
 };
-
-export default validate;

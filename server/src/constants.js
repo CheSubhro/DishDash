@@ -1,3 +1,3 @@
 
 
-export const DB_NAME = "DataBase Name"
+export const DB_NAME = "DishDashDB"

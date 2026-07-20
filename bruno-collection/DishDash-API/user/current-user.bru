@@ -1,0 +1,20 @@
+meta {
+  name: current-user
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/users/current-user
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
