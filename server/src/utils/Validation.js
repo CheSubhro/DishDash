@@ -59,6 +59,54 @@ export const categoryValidator = [
     .isMongoId().withMessage('Invalid Parent Category ID format')
 ];
 
+export const menuItemValidator = [
+  body('name')
+    .trim()
+    .notEmpty().withMessage('Menu item name is required')
+    .isLength({ min: 2 }).withMessage('Name must be at least 2 characters long'),
+  
+  body('price')
+    .notEmpty().withMessage('Price is required')
+    .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
+  body('description')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Description cannot exceed 500 characters'),
+
+  body('category')
+    .notEmpty().withMessage('Category ID is required')
+    .isMongoId().withMessage('Invalid Category ID format'),
+
+  body('isAvailable')
+    .optional()
+    .isBoolean().withMessage('isAvailable must be a boolean value')
+];
+
+export const editMenuItemValidator = [
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ min: 2 }).withMessage('Name must be at least 2 characters long'),
+  
+  body('price')
+    .optional()
+    .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
+  body('description')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Description cannot exceed 500 characters'),
+
+  body('category')
+    .optional()
+    .isMongoId().withMessage('Invalid Category ID format'),
+
+  body('isAvailable')
+    .optional()
+    .isBoolean().withMessage('isAvailable must be a boolean value')
+];
+
 
 export const validate = (req, res, next) => {
   const errors = validationResult(req);

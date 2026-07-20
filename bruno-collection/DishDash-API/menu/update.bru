@@ -1,0 +1,23 @@
+meta {
+  name: update
+  type: http
+  seq: 10
+}
+
+patch {
+  url: {{baseUrl}}/menu/edit/6a5e32b7fadfb99f859f7f98
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "price":"100",
+    "isAvailable":"false"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

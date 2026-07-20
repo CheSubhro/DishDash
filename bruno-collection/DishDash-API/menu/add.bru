@@ -1,0 +1,25 @@
+meta {
+  name: add
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/menu/add
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  name: Grilled Chicken Burger @contentType(Text)
+  price: 299 @contentType(Text)
+  description: Juicy grilled chicken patty with fresh lettuce and cheese @contentType(Text)
+  category: 6a5e28ff9890a96533e81fd9 @contentType(Text)
+  isAvailable: true @contentType(Text)
+  image: @file(C:\Users\CHE\Downloads\WhatsApp Image 2026-06-22 at 18.02.48.jpeg) @contentType(image/jpeg)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
