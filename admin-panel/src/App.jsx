@@ -1,23 +1,29 @@
 
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
-import { ErrorBoundary } from './components/common';
-import MainLayout from './layouts/MainLayout';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import { ErrorBoundary } from "./components/common";
+import MainLayout from "./layouts/MainLayout";
+import AppRoutes from "./routes/AppRoutes";
+import { getCurrentUser } from "./features/auth/authSlice"; 
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCurrentUser()).catch(() => {});
+    }, [dispatch]);
+
     return (
-        <ChakraProvider value={defaultSystem}>
-            <Router>
-                <ErrorBoundary>
-                    <MainLayout>
-                        {/* <Home /> */}
-                        <h1>Welcome to CheSubhro's App</h1>
-                    </MainLayout>
-                </ErrorBoundary> 
-            </Router>
-        </ChakraProvider>
-    )
+        <Router>
+            <ErrorBoundary>
+                <MainLayout>
+                    <AppRoutes />
+                </MainLayout>
+            </ErrorBoundary>
+        </Router>
+    );
 }
 
-export default App
+export default App;
