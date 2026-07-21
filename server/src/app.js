@@ -26,7 +26,7 @@ import packageRoutes from './routes/package.routes.js'
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/categories", categoryRouter)
 app.use("/api/v1/menu", menuRouter)
-app.use('/api/packages', packageRoutes);
+app.use("/api/v1/packages", packageRoutes);
 
 
 export { app }

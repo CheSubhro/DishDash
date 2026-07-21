@@ -6,7 +6,7 @@ import {
     getPackageById,
     updatePackage,
     deletePackage 
-} from "../controllers/packageController.js";
+} from "../controllers/package.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { verifyAdmin } from "../middlewares/admin.middleware.js"; 
 import { 
