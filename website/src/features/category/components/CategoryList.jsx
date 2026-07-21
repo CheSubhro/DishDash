@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from "@heroui/react";
-import { FiGrid } from 'react-icons/fi';
+import { FiGrid  } from 'react-icons/fi';
 import { useCategory } from '../../../hooks/useCategory';
 
 const CategoryList = () => {
