@@ -7,7 +7,7 @@ import Home from '../pages/Home';
 // import Blog from '../pages/Blog';
 // import Contact from '../pages/Contact';
 // import Login from '../pages/Login';
-// import NotFound from '../pages/NotFound';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => (
     <Routes>
@@ -16,8 +16,8 @@ const AppRoutes = () => (
         <Route path="/services" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} /> */}
+        <Route path="/login" element={<Login />} /> */}
+        <Route path="*" element={<NotFound />} />
     </Routes>
 );
 
