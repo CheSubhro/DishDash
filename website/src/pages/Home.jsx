@@ -3,6 +3,8 @@ import React from 'react'
 import HeroSection from '../features/home/components/HeroSection';
 import CategoryList from '../features/category/components/CategoryList';
 import MenuList from '../features/menu/components/MenuList';
+import CateringPackages from '../features/package/components/CateringPackages';
+
 
 const Home = () => {
 
@@ -11,6 +13,7 @@ const Home = () => {
             <HeroSection />
             <CategoryList />
             <MenuList />
+            <CateringPackages />
         </div>
     )
 }
