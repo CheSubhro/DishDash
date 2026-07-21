@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-
 import { ErrorBoundary } from "./components/common";
 import MainLayout from "./layouts/MainLayout";
 import AppRoutes from "./routes/AppRoutes";
@@ -12,7 +11,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCurrentUser()).catch(() => {});
+        dispatch(getCurrentUser()); 
     }, [dispatch]);
 
     return (

@@ -10,8 +10,12 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     await logoutUser();
 });
 
-export const getCurrentUser = createAsyncThunk('auth/getCurrentUser', async () => {
-    return await getMe();
+export const getCurrentUser = createAsyncThunk('auth/getCurrentUser', async (_, { rejectWithValue }) => {
+    try {
+        return await getMe();
+    } catch (error) {
+        return rejectWithValue(error.response?.data || "Not authenticated");
+    }
 });
 
 const authSlice = createSlice({
@@ -23,7 +27,7 @@ const authSlice = createSlice({
             .addCase(login.pending, (state) => { state.loading = true; })
             .addCase(login.fulfilled, (state, action) => {
                 state.loading = false;
-                state.user = action.payload.data; 
+                state.user = action.payload?.data || action.payload;
             })
             // Logout
             .addCase(logout.fulfilled, (state) => {
