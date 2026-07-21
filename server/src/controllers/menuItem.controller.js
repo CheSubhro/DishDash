@@ -46,6 +46,7 @@ const addMenuItem = asyncHandler(async (req, res) => {
 });
 
 const getAllMenuItems = asyncHandler(async (req, res) => {
+    
     const { categoryId } = req.query;
     const filter = categoryId ? { category: categoryId } : {};
 

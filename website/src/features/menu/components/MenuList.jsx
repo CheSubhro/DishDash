@@ -23,6 +23,16 @@ const MenuList = ({ categoryId }) => {
         );
     }
 
+    const displayedItems = menuItems.filter((item) => item.price > 70);
+
+    if (displayedItems.length === 0) {
+        return (
+            <div className="text-center py-12 text-slate-400 text-sm">
+                No menu items available with price above ₹90.
+            </div>
+        );
+    }
+
     return (
         <section className="mx-auto max-w-7xl px-4 py-8 lg:px-8">
             <div className="mb-6">
@@ -35,15 +45,14 @@ const MenuList = ({ categoryId }) => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {menuItems.map((item) => (
+                {displayedItems.map((item) => (
                     <Card key={item._id} shadow="sm" className="border border-slate-100 hover:shadow-md transition-all p-0">
-                        {/* Image Container */}
                         <div className="overflow-hidden relative aspect-video bg-slate-100">
-                            <img
-                                src={item.image || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c"}
-                                alt={item.name}
-                                className="w-full h-[180px] object-cover"
-                            />
+                        <img
+                            src={item.image || `https://dummyimage.com/600x400/f1f5f9/475569&text=${encodeURIComponent(item.name)}`}
+                            alt={item.name}
+                            className="w-full h-[180px] object-cover"
+                        />
                             {!item.isAvailable && (
                                 <span className="absolute top-2 right-2 bg-danger text-white text-[10px] px-2 py-1 rounded-full font-semibold z-10">
                                     Out of Stock
@@ -51,7 +60,6 @@ const MenuList = ({ categoryId }) => {
                             )}
                         </div>
 
-                        {/* Content Container */}
                         <div className="flex flex-col items-start p-4 w-full">
                             <div className="flex justify-between w-full items-center mb-1">
                                 <h4 className="font-bold text-slate-800 text-base">{item.name}</h4>
