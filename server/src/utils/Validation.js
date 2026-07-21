@@ -112,6 +112,54 @@ export const editMenuItemValidator = [
     .isBoolean().withMessage('isAvailable must be a boolean value')
 ];
 
+export const packageValidator = [
+  body('name')
+    .trim()
+    .notEmpty().withMessage('Package name is required')
+    .isLength({ min: 2 }).withMessage('Package name must be at least 2 characters long'),
+  
+  body('eventType')
+    .trim()
+    .notEmpty().withMessage('Event type is required'),
+
+  body('price')
+    .notEmpty().withMessage('Price is required')
+    .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
+  body('items')
+    .optional()
+    .isArray().withMessage('Items must be an array'),
+
+  body('description')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Description cannot exceed 500 characters')
+];
+
+export const editPackageValidator = [
+  body('name')
+    .optional()
+    .trim()
+    .isLength({ min: 2 }).withMessage('Package name must be at least 2 characters long'),
+  
+  body('eventType')
+    .optional()
+    .trim()
+    .notEmpty().withMessage('Event type cannot be empty'),
+
+  body('price')
+    .optional()
+    .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
+  body('items')
+    .optional()
+    .isArray().withMessage('Items must be an array'),
+
+  body('description')
+    .optional()
+    .trim()
+    .isLength({ max: 500 }).withMessage('Description cannot exceed 500 characters')
+];
 
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
