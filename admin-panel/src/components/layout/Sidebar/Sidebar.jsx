@@ -1,7 +1,7 @@
 
 import { Box, VStack, Link, HStack, Text } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { MdDashboard, MdCategory, MdRestaurantMenu, MdSettings } from 'react-icons/md';
+import { MdDashboard, MdCategory, MdRestaurantMenu, MdLayers,MdSettings } from 'react-icons/md';
 
 export const Sidebar = () => {
 
@@ -9,6 +9,7 @@ export const Sidebar = () => {
         { name: 'Dashboard', path: '/dashboard', icon: MdDashboard },
         { name: 'Categories', path: '/categories', icon: MdCategory },
         { name: 'Menu Items', path: '/menu-items', icon: MdRestaurantMenu },
+        { name: 'Packages', path: '/packages', icon: MdLayers },
         { name: 'Settings', path: '/settings', icon: MdSettings },
     ];
 
