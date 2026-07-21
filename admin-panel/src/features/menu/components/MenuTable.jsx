@@ -1,9 +1,23 @@
 
-import React from 'react';
+import React,{useState} from 'react';
 import { Box, Button, Badge, Image } from '@chakra-ui/react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Pagination from '../../../components/common/pagination/Pagination';
 
 export const MenuTable = ({ menuItems, onEdit, onDelete }) => {
+
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8; 
+
+    // Pagination calculations
+    const totalPages = Math.ceil(menuItems.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const currentItems = menuItems.slice(startIndex, startIndex + itemsPerPage);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
     
     return (
         <Box bg="white" boxShadow="md" borderRadius="md" overflowX="auto" p={4}>
@@ -19,11 +33,11 @@ export const MenuTable = ({ menuItems, onEdit, onDelete }) => {
                     </Box>
                 </Box>
                 <Box as="tbody">
-                    {menuItems.map((item) => (
+                    {currentItems.map((item) => (
                         <Box as="tr" key={item._id} borderBottom="1px solid" borderColor="gray.100">
                             <Box as="td" p={4}>
                                 <Image
-                                    src={item.image || 'https://via.placeholder.com/50'}
+                                    src={item.image || 'https://dummyimage.com/150x150/007bff/ffffff&text=Food'}
                                     alt={item.name}
                                     boxSize="40px"
                                     objectFit="cover"
@@ -70,6 +84,11 @@ export const MenuTable = ({ menuItems, onEdit, onDelete }) => {
                     )}
                 </Box>
             </Box>
+            <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+            />
         </Box>
     );
 };
