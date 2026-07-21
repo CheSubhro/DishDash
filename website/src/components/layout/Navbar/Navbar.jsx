@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import { FiMenu, FiX,FiShoppingBag } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiMenu, FiX, FiShoppingBag } from 'react-icons/fi';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,8 +10,8 @@ const Navbar = () => {
         <nav className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* ================= BRAND ================= */}
-                <a
-                    href="/"
+                <Link
+                    to="/"
                     className="flex items-center gap-3"
                 >
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-primary bg-white shadow-lg">
@@ -28,55 +29,54 @@ const Navbar = () => {
                             Smart. Simple. Powerful.
                         </p>
                     </div>
-                </a>
+                </Link>
 
                 {/* ================= DESKTOP NAVIGATION ================= */}
                 <div className="hidden items-center gap-8 lg:flex">
-                    <a
-                        href="/"
+                    <Link
+                        to="/"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
                         Home
-                    </a>
+                    </Link>
 
-                    <a
-                        href="/about"
+                    <Link
+                        to="/about"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
                         About
-                    </a>
+                    </Link>
 
-                    <a
-                        href="/services"
+                    <Link
+                        to="/services"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
                         Services
-                    </a>
+                    </Link>
 
-                    <a
-                        href="/blog"
+                    <Link
+                        to="/blog"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
                         Blog
-                    </a>
+                    </Link>
 
-                    <a
-                        href="/contact"
+                    <Link
+                        to="/contact"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
                         Contact
-                    </a>
+                    </Link>
                 </div>
 
                 {/* ================= DESKTOP ACTIONS ================= */}
                 <div className="hidden items-center gap-3 lg:flex">
-                    <a
-                        href="/login"
+                    <Link
+                        to="/login"
                         className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
                     >
                         Login
-                    </a>
-
+                    </Link>
                 </div>
 
                 {/* ================= MOBILE MENU BUTTON ================= */}
@@ -98,56 +98,63 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="border-t border-slate-200 bg-white px-4 py-5 shadow-lg lg:hidden">
                     <div className="mx-auto flex max-w-7xl flex-col gap-2">
-                        <a
-                            href="/"
+                        <Link
+                            to="/"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
                         >
                             Home
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/about"
+                        <Link
+                            to="/about"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
                         >
                             About
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/services"
+                        <Link
+                            to="/services"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
                         >
                             Services
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/blog"
+                        <Link
+                            to="/blog"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
                         >
                             Blog
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/contact"
+                        <Link
+                            to="/contact"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
                         >
                             Contact
-                        </a>
+                        </Link>
 
                         <div className="my-2 h-px bg-slate-200" />
 
-                        <a
-                            href="/login"
+                        <Link
+                            to="/login"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                         >
                             Login
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/get-started"
+                        <Link
+                            to="/get-started"
+                            onClick={() => setIsMenuOpen(false)}
                             className="rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-3 text-center text-sm font-semibold text-white shadow-md"
                         >
                             Get Started
-                        </a>
+                        </Link>
                     </div>
                 </div>
             )}
