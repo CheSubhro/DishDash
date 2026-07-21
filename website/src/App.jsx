@@ -10,7 +10,7 @@ function App() {
             <ErrorBoundary>
                 <MainLayout>
                     <h1 className="text-2xl font-bold text-primary">
-                        Welcome to CheSubhro's App
+                        DishDash
                     </h1>
                 </MainLayout>
             </ErrorBoundary>
