@@ -30,6 +30,8 @@ const addMenuItem = asyncHandler(async (req, res) => {
         isAvailable: isAvailable ?? true
     });
 
+    await menuItem.populate('category');
+
     await logActivity(
         req.user?._id,
         "ADD_MENU_ITEM",
@@ -57,7 +59,7 @@ const getAllMenuItems = asyncHandler(async (req, res) => {
 const editMenuItem = asyncHandler(async (req, res) => {
 
     const { itemId } = req.params;
-    const { name, price, description, isAvailable } = req.body;
+    const { name, price, description, category,isAvailable } = req.body;
 
     const menuItem = await MenuItem.findById(itemId);
     if (!menuItem) {
@@ -76,11 +78,17 @@ const editMenuItem = asyncHandler(async (req, res) => {
     }
 
     if (name) menuItem.name = name.trim();
-    if (price) menuItem.price = price;
+    if (price !== undefined) {
+        menuItem.price = price;
+    }
     if (description) menuItem.description = description;
+    if (category !== undefined && category !== '') {
+        menuItem.category = category;
+    }
     if (isAvailable !== undefined) menuItem.isAvailable = isAvailable;
 
     await menuItem.save();
+    await menuItem.populate('category', 'name type');
 
     await logActivity(
         req.user?._id,
