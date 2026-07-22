@@ -41,6 +41,13 @@ const Navbar = () => {
                     </Link>
 
                     <Link
+                        to="/menu"
+                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
+                    >
+                        Menu
+                    </Link>
+
+                    <Link
                         to="/about"
                         className="text-sm font-medium text-slate-700 transition hover:text-primary"
                     >
