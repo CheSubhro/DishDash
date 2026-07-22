@@ -4,6 +4,7 @@ import HeroSection from '../features/home/components/HeroSection';
 import CategoryList from '../features/category/components/CategoryList';
 import MenuList from '../features/menu/components/MenuList';
 import CateringPackages from '../features/package/components/CateringPackages';
+import {Newsletter} from '../pages/Newsletter';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <CategoryList />
             <MenuList />
             <CateringPackages />
+            <Newsletter />
         </div>
     )
 }
