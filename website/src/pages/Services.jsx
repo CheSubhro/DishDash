@@ -91,12 +91,12 @@ const Services = () => {
                                 </p>
                             </div>
                             <div>
-                                <a
+                                {/* <a
                                     href="/"
                                     className="inline-flex items-center text-xs font-semibold text-primary hover:underline"
                                 >
                                     Explore Related Packages &rarr;
-                                </a>
+                                </a> */}
                             </div>
                         </Card>
                     );

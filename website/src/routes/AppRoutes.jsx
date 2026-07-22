@@ -8,6 +8,7 @@ import Blog from '../pages/Blog';
 import BlogPost from '../pages/BlogPost';
 import Contact from '../pages/Contact';
 // import Login from '../pages/Login';
+import Help from '../pages/Help';
 import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => (
@@ -19,6 +20,7 @@ const AppRoutes = () => (
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/help" element={<Help />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
