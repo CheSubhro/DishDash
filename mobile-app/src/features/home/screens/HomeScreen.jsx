@@ -4,6 +4,7 @@ import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import MenuItems from '../components/MenuItems';
+import HeroBanner from '../components/HeroBanner';
 
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
 
@@ -96,18 +97,7 @@ export default function HomeScreen() {
                 </View>
                 
                 {/* Hero Banner */}
-                <View className="my-4 bg-[#0B132B] rounded-3xl p-5 overflow-hidden shadow-lg relative">
-                    <View className="w-3/4">
-                        <View className="bg-orange-500 self-start px-3 py-1 rounded-full mb-2">
-                            <Text className="text-white text-xs font-bold">Special Offer</Text>
-                        </View>
-                        <Text className="text-white text-xl font-bold mb-1">Delicious Menu Items!</Text>
-                        <Text className="text-gray-300 text-xs mb-4">Explore our fresh and tasty items category wise.</Text>
-                        <TouchableOpacity className="bg-orange-500 px-4 py-2 rounded-xl self-start">
-                            <Text className="text-white font-semibold text-sm">Explore</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                <HeroBanner />
 
                 {/* Category Chips */}
                 <View className="my-2">
