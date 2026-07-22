@@ -10,6 +10,8 @@ const CategoryList = () => {
     const navigate = useNavigate();
     const { categories, loading } = useCategory();
 
+    const filteredCategories = categories?.filter((cat) => cat.type !== 'main');
+
     return (
         <section className="mx-auto max-w-7xl px-4 py-8 lg:px-8">
             <div className="mb-6">
@@ -27,7 +29,7 @@ const CategoryList = () => {
                 </div>
             ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    {categories?.map((cat) => (
+                    {filteredCategories?.map((cat) => (
                         <div
                             key={cat._id}
                             onClick={() => navigate(`/menu?category=${cat._id}`)}
