@@ -1,30 +1,41 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiMenu, FiX, FiShoppingBag } from 'react-icons/fi';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { FiMenu, FiX, FiUser, FiLogOut } from 'react-icons/fi';
+import { logout } from '../../../features/auth/authSlice'; 
+import {useAuth} from '../../../hooks/useAuth'; 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { isAuthenticated, user } = useAuth();
+
+    const handleLogout = async () => {
+        try {
+            await dispatch(logout()).unwrap();
+            navigate('/login');
+        } catch (error) {
+            console.error('Logout failed:', error);
+        }
+    };
 
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* ================= BRAND ================= */}
-                <Link
-                    to="/"
-                    className="flex items-center gap-3"
-                >
+                <Link to="/" className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-primary bg-white shadow-lg">
                         <span className="text-xl font-black tracking-widest text-slate-900">
                             DD
                         </span>
                     </div>
-
                     <div>
                         <h1 className="text-lg font-bold tracking-tight text-slate-900">
                             DishDash
                         </h1>
-
                         <p className="hidden text-xs text-slate-500 sm:block">
                             Smart. Simple. Powerful.
                         </p>
@@ -33,57 +44,54 @@ const Navbar = () => {
 
                 {/* ================= DESKTOP NAVIGATION ================= */}
                 <div className="hidden items-center gap-8 lg:flex">
-                    <Link
-                        to="/"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         Home
                     </Link>
-
-                    <Link
-                        to="/menu"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/menu" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         Menu
                     </Link>
-
-                    <Link
-                        to="/about"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/about" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         About
                     </Link>
-
-                    <Link
-                        to="/services"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/services" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         Services
                     </Link>
-
-                    <Link
-                        to="/blog"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/blog" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         Blog
                     </Link>
-
-                    <Link
-                        to="/contact"
-                        className="text-sm font-medium text-slate-700 transition hover:text-primary"
-                    >
+                    <Link to="/contact" className="text-sm font-medium text-slate-700 transition hover:text-primary">
                         Contact
                     </Link>
                 </div>
 
                 {/* ================= DESKTOP ACTIONS ================= */}
                 <div className="hidden items-center gap-3 lg:flex">
-                    <Link
-                        to="/login"
-                        className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
-                    >
-                        Login
-                    </Link>
+                    {isAuthenticated ? (
+                        <div className="flex items-center gap-3">
+                            <Link
+                                to="/profile"
+                                className="flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                            >
+                                <FiUser size={18} />
+                                <span>{user?.name || 'Profile'}</span>
+                            </Link>
+
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center gap-2 rounded-xl bg-rose-50 px-4 py-2.5 text-sm font-semibold text-rose-600 transition hover:bg-rose-100"
+                            >
+                                <FiLogOut size={18} />
+                                <span>Logout</span>
+                            </button>
+                        </div>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                        >
+                            Login
+                        </Link>
+                    )}
                 </div>
 
                 {/* ================= MOBILE MENU BUTTON ================= */}
@@ -93,11 +101,7 @@ const Navbar = () => {
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-700 transition hover:bg-slate-100 lg:hidden"
                 >
-                    {isMenuOpen ? (
-                        <FiX size={24} />
-                    ) : (
-                        <FiMenu size={24} />
-                    )}
+                    {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                 </button>
             </div>
 
@@ -105,63 +109,68 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="border-t border-slate-200 bg-white px-4 py-5 shadow-lg lg:hidden">
                     <div className="mx-auto flex max-w-7xl flex-col gap-2">
-                        <Link
-                            to="/"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
-                        >
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
                             Home
                         </Link>
-
-                        <Link
-                            to="/about"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
-                        >
+                        <Link to="/menu" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
+                            Menu
+                        </Link>
+                        <Link to="/about" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
                             About
                         </Link>
-
-                        <Link
-                            to="/services"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
-                        >
+                        <Link to="/services" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
                             Services
                         </Link>
-
-                        <Link
-                            to="/blog"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
-                        >
+                        <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
                             Blog
                         </Link>
-
-                        <Link
-                            to="/contact"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary"
-                        >
+                        <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-primary">
                             Contact
                         </Link>
 
                         <div className="my-2 h-px bg-slate-200" />
 
-                        <Link
-                            to="/login"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-                        >
-                            Login
-                        </Link>
+                        {isAuthenticated ? (
+                            <>
+                                <Link
+                                    to="/profile"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                                >
+                                    <FiUser size={18} />
+                                    <span>Profile</span>
+                                </Link>
 
-                        <Link
-                            to="/get-started"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-3 text-center text-sm font-semibold text-white shadow-md"
-                        >
-                            Get Started
-                        </Link>
+                                <button
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        handleLogout();
+                                    }}
+                                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-rose-600 transition hover:bg-rose-50"
+                                >
+                                    <FiLogOut size={18} />
+                                    <span>Logout</span>
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link
+                                    to="/login"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                                >
+                                    Login
+                                </Link>
+
+                                <Link
+                                    to="/get-started"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-3 text-center text-sm font-semibold text-white shadow-md"
+                                >
+                                    Get Started
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             )}
