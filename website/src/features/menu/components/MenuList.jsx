@@ -3,8 +3,7 @@ import React from 'react';
 import { useMenu } from '../../../hooks/useMenu';
 import { Spinner, Card } from "@heroui/react";
 
-const MenuList = ({ categoryId }) => {
-
+const MenuList = ({ categoryId, showAll = false }) => {
     const { menuItems, loading } = useMenu(categoryId);
 
     if (loading) {
@@ -23,12 +22,16 @@ const MenuList = ({ categoryId }) => {
         );
     }
 
-    const displayedItems = menuItems.filter((item) => item.price > 70);
+    // যদি showAll true হয় (যেমন: মেনু পেজে), তবে সব আইটেম দেখাবে। 
+    // আর হোম পেজে চাইলে ফিল্টার করতে পারেন বা সব দেখাতে পারেন।
+    const displayedItems = showAll 
+        ? menuItems 
+        : menuItems.filter((item) => item.price > 70);
 
     if (displayedItems.length === 0) {
         return (
             <div className="text-center py-12 text-slate-400 text-sm">
-                No menu items available with price above ₹90.
+                No menu items available matching your criteria.
             </div>
         );
     }
@@ -37,7 +40,7 @@ const MenuList = ({ categoryId }) => {
         <section className="mx-auto max-w-7xl px-4 py-8 lg:px-8">
             <div className="mb-6">
                 <h2 className="text-2xl font-bold tracking-tight text-slate-800">
-                    Our Delicious Menu Items
+                    {categoryId ? "Category Menu Items" : "Our Delicious Menu Items"}
                 </h2>
                 <p className="text-sm text-slate-500">
                     Explore our freshly prepared catering selections tailored for your events
@@ -48,11 +51,11 @@ const MenuList = ({ categoryId }) => {
                 {displayedItems.map((item) => (
                     <Card key={item._id} shadow="sm" className="border border-slate-100 hover:shadow-md transition-all p-0">
                         <div className="overflow-hidden relative aspect-video bg-slate-100">
-                        <img
-                            src={item.image || `https://dummyimage.com/600x400/f1f5f9/475569&text=${encodeURIComponent(item.name)}`}
-                            alt={item.name}
-                            className="w-full h-[180px] object-cover"
-                        />
+                            <img
+                                src={item.image || `https://dummyimage.com/600x400/f1f5f9/475569&text=${encodeURIComponent(item.name)}`}
+                                alt={item.name}
+                                className="w-full h-[180px] object-cover"
+                            />
                             {!item.isAvailable && (
                                 <span className="absolute top-2 right-2 bg-danger text-white text-[10px] px-2 py-1 rounded-full font-semibold z-10">
                                     Out of Stock
