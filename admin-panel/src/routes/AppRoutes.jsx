@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard';
 import {Categories} from '../pages/Categories'; 
 import {MenuItems} from '../pages/MenuItems';
 import {Packages} from '../pages/Packages';
+import {SettingsPage} from '../pages/Settings';
 import {NotFound} from '../pages/NotFound'; 
 
 const AppRoutes = () => {
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path="/categories" element={<Categories />} />
             <Route path="/menu-items" element={<MenuItems />} />
             <Route path="/packages" element={<Packages />} />
+            <Route path="/settings" element={<SettingsPage />} />
             <Route path="*" element={<NotFound />} /> 
         </Routes>
     );

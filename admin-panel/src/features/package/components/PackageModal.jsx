@@ -25,7 +25,10 @@ export const PackageModal = ({ isOpen, onClose, onSave, initialData }) => {
             setPrice(initialData.price || '');
             setDescription(initialData.description || '');
             const copiedItems = initialData.items?.length 
-                ? initialData.items.map(item => ({ ...item })) 
+                ? initialData.items.map(item => ({ 
+                    itemName: item.itemName || item.name || '', 
+                    price: item.price || '' 
+                  })) 
                 : [{ itemName: '', price: '' }];
             setItems(copiedItems);
         } else {
