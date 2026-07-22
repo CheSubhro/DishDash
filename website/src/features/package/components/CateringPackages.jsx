@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { usePackages } from '../../../hooks/usePackages';
 import { Spinner, Card, Button } from "@heroui/react";
 
@@ -15,7 +16,16 @@ const eventCategories = [
 ];
 
 const CateringPackages = () => {
+    const navigate = useNavigate();
     const { packages, loading, selectedEventType, changeEventType } = usePackages();
+
+    const handleCategoryClick = (value) => {
+        if (value === "Custom") {
+            navigate("/custom-package");
+        } else {
+            changeEventType(value);
+        }
+    };
 
     return (
         <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
@@ -29,14 +39,14 @@ const CateringPackages = () => {
                 </p>
             </div>
 
-            {/* Filter Tabs - Fixed contrast and visibility issues */}
+            {/* Filter Tabs */}
             <div className="flex flex-wrap justify-center gap-2.5 mb-10">
                 {eventCategories.map((cat) => {
                     const isSelected = selectedEventType === cat.value;
                     return (
                         <button
                             key={cat.value}
-                            onClick={() => changeEventType(cat.value)}
+                            onClick={() => handleCategoryClick(cat.value)}
                             className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 border shadow-sm ${
                                 isSelected
                                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-105"
