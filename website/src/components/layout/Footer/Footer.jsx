@@ -36,16 +36,38 @@ export default function Footer() {
 
                     {/* ================= SOCIAL LINKS ================= */}
                     <div className="mt-6 flex items-center gap-3">
-                        <a href="#" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white">
+                        <a 
+                            href="https://facebook.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Facebook" 
+                            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white"
+                        >
                             <FiFacebook size={18} />
                         </a>
-                        <a href="#" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white">
+                        <a 
+                            href="https://instagram.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Instagram" 
+                            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white"
+                        >
                             <FiInstagram size={18} />
                         </a>
-                        <a href="#" aria-label="Twitter" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white">
+                        <a 
+                            href="https://twitter.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            aria-label="Twitter" 
+                            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white"
+                        >
                             <FiTwitter size={18} />
                         </a>
-                        <a href="#" aria-label="Email" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white">
+                        <a 
+                            href="mailto:support@dishdash.com" 
+                            aria-label="Email" 
+                            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-400 transition hover:bg-primary hover:text-white"
+                        >
                             <FiMail size={18} />
                         </a>
                     </div>
