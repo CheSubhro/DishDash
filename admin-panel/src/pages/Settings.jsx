@@ -10,11 +10,11 @@ import {
 } from '@chakra-ui/react';
 
 export const SettingsPage = () => {
+
     const [businessName, setBusinessName] = useState(localStorage.getItem('businessName') || 'DishDash Catering');
     const [phone, setPhone] = useState(localStorage.getItem('phone') || '+91 9876543210');
     const [email, setEmail] = useState(localStorage.getItem('email') || 'support@dishdash.com');
     
-    // Toast-er bodole simple success message state
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleSave = (e) => {
@@ -25,7 +25,6 @@ export const SettingsPage = () => {
         
         setSuccessMessage('Settings updated successfully!');
         
-        // 3 second por message-ti hide kore dibe
         setTimeout(() => {
             setSuccessMessage('');
         }, 3000);

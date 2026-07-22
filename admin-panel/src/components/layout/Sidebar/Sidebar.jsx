@@ -6,7 +6,7 @@ import { MdDashboard, MdCategory, MdRestaurantMenu, MdLayers,MdSettings } from '
 export const Sidebar = () => {
 
     const menuItems = [
-        { name: 'Dashboard', path: '/dashboard', icon: MdDashboard },
+        { name: 'Dashboard', path: '/', icon: MdDashboard },
         { name: 'Categories', path: '/categories', icon: MdCategory },
         { name: 'Menu Items', path: '/menu-items', icon: MdRestaurantMenu },
         { name: 'Packages', path: '/packages', icon: MdLayers },
