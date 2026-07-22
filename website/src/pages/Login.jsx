@@ -28,8 +28,8 @@ const Login = () => {
                 {/* Footer Link */}
                 <p className="text-center text-sm text-slate-500 pt-2">
                     Don't have an account?{' '}
-                    <Link to="/contact" className="font-medium text-primary hover:underline">
-                        Contact us
+                    <Link to="/register" className="font-medium text-primary hover:underline">
+                        Sign Up
                     </Link>
                 </p>
             </div>

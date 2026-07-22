@@ -8,6 +8,7 @@ import Services from '../pages/Services';
 import Blog from '../pages/Blog';
 import BlogPost from '../pages/BlogPost';
 import Contact from '../pages/Contact';
+import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Help from '../pages/Help';
@@ -25,6 +26,7 @@ const AppRoutes = () => (
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/help" element={<Help />} />
