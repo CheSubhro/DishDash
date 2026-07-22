@@ -183,16 +183,15 @@ const CustomPackage = () => {
                         </div>
 
                         {/* Submit Button */}
-                        <button 
+                        {/* <button 
                             disabled={selectedItems.length === 0}
                             onClick={() => alert(`Custom package created successfully with ${selectedItems.length} items! Total: ₹{totalPrice}`)}
                             className="w-full flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-4 text-sm font-bold text-white shadow-lg transition hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                             <FiCheckCircle size={18} />
                             <span>Confirm Custom Package</span>
-                        </button>
+                        </button> */}
                     </div>
-
                 </div>
             )}
         </div>

@@ -87,7 +87,7 @@ const HeroSection = () => {
                         <Button 
                             variant="bordered"
                             size="lg"
-                            onClick={() => navigate('/packages')}
+                            onClick={() => navigate('/custom-package')}
                             className="font-semibold text-white border-slate-600 hover:bg-white/10"
                         >
                             View Packages
