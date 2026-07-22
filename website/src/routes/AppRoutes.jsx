@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from '../pages/Home';
 import MenuItem from '../pages/MenuItem';
+import CustomPackage from '../pages/CustomPackage';
 import About from '../pages/About';
 import Services from '../pages/Services';
 import Blog from '../pages/Blog';
@@ -21,6 +22,7 @@ const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuItem />} />
+        <Route path="/custom-package" element={<CustomPackage />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
