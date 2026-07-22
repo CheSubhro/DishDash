@@ -11,6 +11,7 @@ import Contact from '../pages/Contact';
 import Help from '../pages/Help';
 import Privacy from '../pages/Privacy';
 import Terms from '../pages/Terms';
+import Support from '../pages/Support';
 import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => (
@@ -25,6 +26,7 @@ const AppRoutes = () => (
         <Route path="/help" element={<Help />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/support" element={<Support />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
