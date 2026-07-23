@@ -4,8 +4,10 @@ import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
 import MenuItems from '../components/MenuItems';
 import HeroBanner from '../components/HeroBanner';
+
 
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
 
@@ -75,16 +77,10 @@ export default function HomeScreen() {
                 <Header onNotificationPress={() => console.log('Notification clicked')} />
 
                 {/* Search Bar */}
-                <View className="my-3 flex-row items-center bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                    <Ionicons name="search" size={20} color="#9CA3AF" />
-                    <TextInput 
-                        placeholder="Search for menu items..." 
-                        placeholderTextColor="#9CA3AF"
-                        value={searchQuery}
-                        onChangeText={setSearchQuery}
-                        className="flex-1 ml-2 text-base text-gray-800"
-                    />
-                </View>
+                <SearchBar 
+                    searchQuery={searchQuery} 
+                    setSearchQuery={setSearchQuery} 
+                />
                 
                 {/* Hero Banner */}
                 <HeroBanner />
