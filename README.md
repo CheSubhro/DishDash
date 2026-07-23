@@ -3,6 +3,7 @@
 DishDash is a comprehensive, multi-platform catering management solution designed to streamline event planning, menu customization, and order processing for both customers and administrators.
 
 ---
+### 1. Admin Panel
 
 ![Menu Items](screenshot/admin-panel/screencapture-localhost-5173-menu-items-2026-07-22-15_35_27.png)
 ![Packages](screenshot/admin-panel/screencapture-localhost-5173-packages-2026-07-22-15_37_29.png)
