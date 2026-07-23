@@ -58,3 +58,6 @@ To run this project locally, clone the repository and set up each module (Server
 
 Bash
 git clone [https://github.com/CheSubhro/DishDash.git](https://github.com/CheSubhro/DishDash.git)
+
+👨‍💻 Developed by CheSubhro
+Built with 💜 for a seamless experience.
