@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ContactForm from '../components/ContactForm';
 
-export default function ContactScreen() {
+export default function ContactScreen({ initialMessage }) {
     return (
         <SafeAreaView className="flex-1 bg-gray-50">
             <ScrollView showsVerticalScrollIndicator={false} className="px-5 pt-4 pb-10">
@@ -14,7 +14,7 @@ export default function ContactScreen() {
                     Have questions about catering or bulk orders? Reach out to our support team anytime.
                 </Text>
 
-                <ContactForm />
+                <ContactForm initialData={initialMessage} />
 
             </ScrollView>
         </SafeAreaView>

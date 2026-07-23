@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { API_BASE_URL } from '../../../config/api';
 
-export default function CustomPackageScreen({ onBack }) {
+export default function CustomPackageScreen({ onBack, onNavigateToContact }) {
 
     const [menuItems, setMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -44,6 +44,20 @@ export default function CustomPackageScreen({ onBack }) {
     };
 
     const totalPrice = selectedItems.reduce((sum, item) => sum + (item.price || 0), 0);
+
+    const handleRequestQuotation = () => {
+        const customOrderData = {
+            items: selectedItems,
+            totalPrice: totalPrice,
+            type: 'Custom Package Request'
+        };
+
+        if (typeof onNavigateToContact === 'function') {
+            onNavigateToContact(customOrderData);
+        } else {
+            alert(`Order submitted with ${selectedItems.length} items! Total: ₹${totalPrice}`);
+        }
+    };
 
     return (
         <SafeAreaView className="flex-1 bg-gray-50">
@@ -129,9 +143,7 @@ export default function CustomPackageScreen({ onBack }) {
                         <Text className="text-[#0B132B] font-bold text-lg">₹{totalPrice}</Text>
                     </View>
                     <TouchableOpacity 
-                        onPress={() => {
-                            alert(`Order submitted with ${selectedItems.length} items! Total: ₹${totalPrice}`);
-                        }}
+                        onPress={handleRequestQuotation}
                         className="bg-[#0B132B] px-6 py-3 rounded-xl shadow-md"
                     >
                         <Text className="text-white font-bold text-xs">Request Quotation</Text>

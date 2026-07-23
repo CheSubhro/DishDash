@@ -12,13 +12,22 @@ import BottomTabBar from './BottomTabBar';
 export default function AppNavigator() {
     
     const [currentView, setCurrentView] = useState('home');
+    const [customOrderData, setCustomOrderData] = useState(null);
 
     const renderScreen = () => {
         switch (currentView) {
             case 'home':
                 return <HomeScreen navigateTo={setCurrentView} />;
             case 'customPackage':
-                return <CustomPackageScreen navigateTo={setCurrentView} />;
+                return (
+                    <CustomPackageScreen 
+                        onBack={() => setCurrentView('home')} 
+                        onNavigateToContact={(data) => {
+                            setCustomOrderData(data); 
+                            setCurrentView('contact'); 
+                        }} 
+                    />
+                );
             case 'newsletter':
                 return <NewsletterScreen navigateTo={setCurrentView} />;
             case 'package':
