@@ -3,18 +3,11 @@
 DishDash is a comprehensive, multi-platform catering management solution designed to streamline event planning, menu customization, and order processing for both customers and administrators.
 
 ---
-Mobile App
-1. App Screen 1
-![Mobile App 1](screenshot/mobile app/WhatsApp Image 2026-07-23 at 14.14.44.jpeg)
 
-2. App Screen 2
-![Mobile App 2](screenshot/mobile app/WhatsApp Image 2026-07-23 at 14.14.50.jpeg)
+### 1. Admin Panel
 
-3. App Screen 3
-![Mobile App 3](screenshot/mobile app/WhatsApp Image 2026-07-23 at 14.14.52 (1).jpeg)
+![Home](screenshot/admin-panel/screencapture-localhost-5173-menu-items-2026-07-22-15_35_27.png)
 
-4. App Screen 4
-![Mobile App 4](screenshot/mobile app/WhatsApp Image 2026-07-23 at 14.14.53 (2).jpeg)
 ## 🚀 Project Structure
 
 ```text
