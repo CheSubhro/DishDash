@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1';
 
 export default function CustomPackageScreen({ onBack }) {
+
     const [menuItems, setMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedItems, setSelectedItems] = useState([]); 
@@ -33,7 +34,6 @@ export default function CustomPackageScreen({ onBack }) {
             });
     }, []);
 
-    // মেনু সিলেক্ট বা আনসিলেক্ট করার ফাংশন
     const toggleSelectItem = (item) => {
         const isSelected = selectedItems.some((i) => i._id === item._id);
         if (isSelected) {
@@ -43,7 +43,6 @@ export default function CustomPackageScreen({ onBack }) {
         }
     };
 
-    // মোট দাম হিসাব করা
     const totalPrice = selectedItems.reduce((sum, item) => sum + (item.price || 0), 0);
 
     return (
@@ -72,7 +71,7 @@ export default function CustomPackageScreen({ onBack }) {
                             Selected Items: {selectedItems.length}
                         </Text>
                         <Text className="text-orange-900 font-bold text-sm">
-                            Total: ৳{totalPrice}
+                            Total: ₹{totalPrice}
                         </Text>
                     </View>
                 </View>
@@ -107,7 +106,7 @@ export default function CustomPackageScreen({ onBack }) {
                                         <Text className="text-gray-500 text-xs mb-2" numberOfLines={2}>
                                             {item.description || 'Delicious catering item for your event.'}
                                         </Text>
-                                        <Text className="text-orange-600 font-bold text-xs">৳{item.price || 0}</Text>
+                                        <Text className="text-orange-600 font-bold text-xs">₹{item.price || 0}</Text>
                                     </View>
 
                                     <View className={`w-7 h-7 rounded-full items-center justify-center border ${
@@ -127,11 +126,11 @@ export default function CustomPackageScreen({ onBack }) {
                 <View className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-5 py-4 flex-row items-center justify-between shadow-lg">
                     <View>
                         <Text className="text-gray-400 text-xs">Total Estimated Price</Text>
-                        <Text className="text-[#0B132B] font-bold text-lg">৳{totalPrice}</Text>
+                        <Text className="text-[#0B132B] font-bold text-lg">₹{totalPrice}</Text>
                     </View>
                     <TouchableOpacity 
                         onPress={() => {
-                            alert(`Order submitted with ${selectedItems.length} items! Total: ৳${totalPrice}`);
+                            alert(`Order submitted with ${selectedItems.length} items! Total: ₹${totalPrice}`);
                         }}
                         className="bg-[#0B132B] px-6 py-3 rounded-xl shadow-md"
                     >
