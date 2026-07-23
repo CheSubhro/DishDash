@@ -15,11 +15,10 @@ DishDash is a comprehensive, multi-platform catering management solution designe
 ![Home](screenshot/website/screencapture-localhost-5173-custom-package-2026-07-22-15_47_53.png)
 
 ### 3. Mobile App
-![Home](screenshot/mobile-app/WhatsApp Image 2026-07-23 at 14.14.44.jpeg)
-![Home](screenshot/mobile-app/WhatsApp Image 2026-07-23 at 14.14.50.jpeg)
-![Home](screenshot/mobile-app/WhatsApp Image 2026-07-23 at 14.14.52 (1).jpeg)
-![Home](screenshot/mobile-app/WhatsApp Image 2026-07-23 at 14.14.53 (2).jpeg)
-
+![App Screen 1](screenshot/mobile-app/WhatsApp%20Image%202026-07-23%20at%2014.14.44.jpeg)
+![App Screen 2](screenshot/mobile-app/WhatsApp%20Image%202026-07-23%20at%2014.14.50.jpeg)
+![App Screen 3](screenshot/mobile-app/WhatsApp%20Image%202026-07-23%20at%2014.14.52%20%281%29.jpeg)
+![App Screen 4](screenshot/mobile-app/WhatsApp%20Image%202026-07-23%20at%2014.14.53%20%282%29.jpeg)
 
 ## 🚀 Project Structure
 
