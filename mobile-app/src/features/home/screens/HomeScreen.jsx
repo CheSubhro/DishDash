@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
+import CategoryChips from '../components/CategoryChips';
 import MenuItems from '../components/MenuItems';
 import HeroBanner from '../components/HeroBanner';
 
@@ -86,26 +87,11 @@ export default function HomeScreen() {
                 <HeroBanner />
 
                 {/* Category Chips */}
-                <View className="my-2">
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false} className="py-1">
-                        {categories.map((cat) => {
-                            const isActive = activeCategoryId === cat._id;
-                            return (
-                                <TouchableOpacity
-                                    key={cat._id}
-                                    onPress={() => setActiveCategoryId(cat._id)}
-                                    className={`px-5 py-2.5 rounded-full mr-3 ${
-                                        isActive ? 'bg-[#0B132B]' : 'bg-white border border-gray-200'
-                                    }`}
-                                >
-                                    <Text className={`font-medium ${isActive ? 'text-white' : 'text-gray-600'}`}>
-                                        {cat.name}
-                                    </Text>
-                                </TouchableOpacity>
-                            );
-                        })}
-                    </ScrollView>
-                </View>
+                <CategoryChips 
+                    categories={categories} 
+                    activeCategoryId={activeCategoryId} 
+                    setActiveCategoryId={setActiveCategoryId} 
+                />
 
                 {/* Menu Items Section */}
                 <View className="my-3">
