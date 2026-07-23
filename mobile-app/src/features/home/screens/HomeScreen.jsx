@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import Header from '../components/Header';
 import MenuItems from '../components/MenuItems';
 import HeroBanner from '../components/HeroBanner';
 
@@ -71,18 +72,7 @@ export default function HomeScreen() {
             <ScrollView showsVerticalScrollIndicator={false} className="px-4 pt-2">
                 
                 {/* Logo and Header */}
-                <View className="flex-row items-center justify-between py-3">
-                    <View>
-                        <Text className="text-2xl font-bold tracking-wider text-[#0B132B]">
-                            Dish<Text className="text-orange-500">Dash</Text>
-                        </Text>
-                        <Text className="text-xs text-gray-500">Delivering Delicious Catering</Text>
-                    </View>
-                    
-                    <TouchableOpacity className="p-2 bg-white rounded-full shadow-sm border border-gray-100">
-                        <Ionicons name="notifications-outline" size={22} color="#0B132B" />
-                    </TouchableOpacity>
-                </View>
+                <Header onNotificationPress={() => console.log('Notification clicked')} />
 
                 {/* Search Bar */}
                 <View className="my-3 flex-row items-center bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
