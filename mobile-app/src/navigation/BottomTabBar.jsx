@@ -6,6 +6,7 @@ export default function BottomTabBar({ currentView, navigateTo }) {
     const tabs = [
         { id: 'home', label: 'Home' },
         { id: 'about', label: 'About' },
+        { id: 'package', label: 'Package' },
         { id: 'contact', label: 'Contact' },
     ];
 
