@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import HeroBanner from '../components/HeroBanner';
@@ -8,15 +8,11 @@ import SearchBar from '../components/SearchBar';
 import CategoryChips from '../components/CategoryChips';
 import MenuItems from '../components/MenuItems';
 import CustomMenuBanner from '../components/CustomMenuBanner';
-import CustomPackageScreen from './CustomPackageScreen';
-import NewsletterScreen from '../../newsletter/screens/NewsletterScreen';
 import NewsletterBanner from '../../newsletter/components/NewsletterBanner';
 
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
 
-export default function HomeScreen() {
-
-    const [currentView, setCurrentView] = useState('home');
+export default function HomeScreen({ navigateTo }) {
     const [activeCategoryId, setActiveCategoryId] = useState('all'); 
     const [categories, setCategories] = useState([{ _id: 'all', name: 'All' }]);
     const [menuItems, setMenuItems] = useState([]); 
@@ -50,10 +46,8 @@ export default function HomeScreen() {
         .then(async (res) => {
             const textResponse = await res.text(); 
             try {
-                const jsonResponse = JSON.parse(textResponse); 
-                return jsonResponse;
+                return JSON.parse(textResponse); 
             } catch (e) {
-                console.log("Server HTML/Text Response:", textResponse); 
                 throw new Error("Server returned HTML instead of JSON");
             }
         })
@@ -73,38 +67,25 @@ export default function HomeScreen() {
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    if (currentView === 'customPackage') {
-        return <CustomPackageScreen onBack={() => setCurrentView('home')} />;
-    }
-
-    if (currentView === 'newsletter') {
-        return <NewsletterScreen onBack={() => setCurrentView('home')} />;
-    }
-
     return (
         <SafeAreaView className="flex-1 bg-gray-50">
             <ScrollView showsVerticalScrollIndicator={false} className="px-4 pt-2 pb-10">
                 
-                {/* Logo and Header */}
                 <Header onNotificationPress={() => console.log('Notification clicked')} />
 
-                {/* Search Bar */}
                 <SearchBar 
                     searchQuery={searchQuery} 
                     setSearchQuery={setSearchQuery} 
                 />
                 
-                {/* Hero Banner */}
                 <HeroBanner />
 
-                {/* Category Chips */}
                 <CategoryChips 
                     categories={categories} 
                     activeCategoryId={activeCategoryId} 
                     setActiveCategoryId={setActiveCategoryId} 
                 />
 
-                {/* Menu Items Section */}
                 <View className="my-3">
                     <View className="flex-row items-center justify-between mb-3">
                         <Text className="text-lg font-bold text-[#0B132B]">Menu Items</Text>
@@ -115,14 +96,12 @@ export default function HomeScreen() {
 
                 {/* Custom Order Banner */}
                 <CustomMenuBanner 
-                    onPress={() => {
-                        setCurrentView('customPackage'); 
-                    }} 
+                    onPress={() => navigateTo('customPackage')} 
                 />
 
                 {/* Newsletter Banner Component */}
                 <NewsletterBanner 
-                    onPress={() => setCurrentView('newsletter')} 
+                    onPress={() => navigateTo('newsletter')} 
                 />
 
             </ScrollView>
