@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import HeroBanner from '../components/HeroBanner';
@@ -9,8 +9,8 @@ import CategoryChips from '../components/CategoryChips';
 import MenuItems from '../components/MenuItems';
 import CustomMenuBanner from '../components/CustomMenuBanner';
 import CustomPackageScreen from './CustomPackageScreen';
-
-
+import NewsletterScreen from '../../newsletter/screens/NewsletterScreen';
+import NewsletterBanner from '../../newsletter/components/NewsletterBanner';
 
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
 
@@ -77,9 +77,13 @@ export default function HomeScreen() {
         return <CustomPackageScreen onBack={() => setCurrentView('home')} />;
     }
 
+    if (currentView === 'newsletter') {
+        return <NewsletterScreen onBack={() => setCurrentView('home')} />;
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-gray-50">
-            <ScrollView showsVerticalScrollIndicator={false} className="px-4 pt-2">
+            <ScrollView showsVerticalScrollIndicator={false} className="px-4 pt-2 pb-10">
                 
                 {/* Logo and Header */}
                 <Header onNotificationPress={() => console.log('Notification clicked')} />
@@ -109,11 +113,16 @@ export default function HomeScreen() {
                     <MenuItems menuItems={filteredMenuItems} loading={loading} />
                 </View>
 
-                {/* Custom Order */}
+                {/* Custom Order Banner */}
                 <CustomMenuBanner 
                     onPress={() => {
                         setCurrentView('customPackage'); 
                     }} 
+                />
+
+                {/* Newsletter Banner Component */}
+                <NewsletterBanner 
+                    onPress={() => setCurrentView('newsletter')} 
                 />
 
             </ScrollView>
