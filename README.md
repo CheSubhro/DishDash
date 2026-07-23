@@ -9,6 +9,11 @@ DishDash is a comprehensive, multi-platform catering management solution designe
 ![Home](screenshot/admin-panel/screencapture-localhost-5173-menu-items-2026-07-22-15_35_27.png)
 ![Home](screenshot/admin-panel/screencapture-localhost-5173-packages-2026-07-22-15_37_29.png)
 
+### 2. Website
+![Home](screenshot/website/screencapture-localhost-5173-2026-07-22-16_05_48.png)
+![Home](screenshot/website/screencapture-localhost-5173-2026-07-22-15_47_11.png)
+![Home](screenshot/website/screencapture-localhost-5173-custom-package-2026-07-22-15_47_53.png)
+
 ## 🚀 Project Structure
 
 ```text
