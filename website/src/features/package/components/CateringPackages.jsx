@@ -16,6 +16,7 @@ const eventCategories = [
 ];
 
 const CateringPackages = () => {
+    
     const navigate = useNavigate();
     const { packages, loading, selectedEventType, changeEventType } = usePackages();
 

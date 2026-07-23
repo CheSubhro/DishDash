@@ -2,18 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
 import Header from '../components/Header';
+import HeroBanner from '../components/HeroBanner';
 import SearchBar from '../components/SearchBar';
 import CategoryChips from '../components/CategoryChips';
 import MenuItems from '../components/MenuItems';
-import HeroBanner from '../components/HeroBanner';
+import CustomMenuBanner from '../components/CustomMenuBanner';
+import CustomPackageScreen from './CustomPackageScreen';
+
 
 
 const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
 
 export default function HomeScreen() {
 
+    const [currentView, setCurrentView] = useState('home');
     const [activeCategoryId, setActiveCategoryId] = useState('all'); 
     const [categories, setCategories] = useState([{ _id: 'all', name: 'All' }]);
     const [menuItems, setMenuItems] = useState([]); 
@@ -70,6 +73,10 @@ export default function HomeScreen() {
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    if (currentView === 'customPackage') {
+        return <CustomPackageScreen onBack={() => setCurrentView('home')} />;
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-gray-50">
             <ScrollView showsVerticalScrollIndicator={false} className="px-4 pt-2">
@@ -103,20 +110,11 @@ export default function HomeScreen() {
                 </View>
 
                 {/* Custom Order */}
-                <View className="my-4 bg-orange-50 border border-orange-200 rounded-3xl p-5 mb-8">
-                    <View className="flex-row items-center justify-between">
-                        <View className="w-2/3">
-                            <Text className="text-[#0B132B] font-bold text-lg mb-1">Have a Custom Menu?</Text>
-                            <Text className="text-gray-600 text-xs mb-3">Tell us your event details and get a custom price quotation instantly.</Text>
-                            <TouchableOpacity className="bg-[#0B132B] px-4 py-2.5 rounded-xl self-start">
-                                <Text className="text-white font-semibold text-xs">Request a Quote</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View className="w-1/3 items-center justify-center">
-                            <Ionicons name="restaurant-outline" size={50} color="#0B132B" />
-                        </View>
-                    </View>
-                </View>
+                <CustomMenuBanner 
+                    onPress={() => {
+                        setCurrentView('customPackage'); 
+                    }} 
+                />
 
             </ScrollView>
         </SafeAreaView>
