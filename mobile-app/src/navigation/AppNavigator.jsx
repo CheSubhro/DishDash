@@ -5,6 +5,7 @@ import CustomPackageScreen from '../features/home/screens/CustomPackageScreen';
 import NewsletterScreen from '../features/newsletter/screens/NewsletterScreen';
 
 export default function AppNavigator() {
+    
     const [currentView, setCurrentView] = useState('home');
     const [viewParams, setViewParams] = useState(null); 
 
