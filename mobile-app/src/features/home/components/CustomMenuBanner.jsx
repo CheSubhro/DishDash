@@ -12,7 +12,7 @@ export default function CustomMenuBanner({ onPress }) {
         >
             <View className="flex-row items-center justify-between">
                 <View className="w-2/3">
-                    <Text className="text-[#0B132B] font-bold text-lg mb-1">Have a Custom Menu?</Text>
+                    <Text className="text-[#0B132B] font-bold text-lg mb-1">Have a Custom Menu Package?</Text>
                     <Text className="text-gray-600 text-xs mb-3 leading-relaxed">
                         Tell us your event details and set a menu to get an instant price quotation tailored just for you.
                     </Text>
