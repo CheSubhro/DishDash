@@ -10,7 +10,8 @@ import MenuItems from '../components/MenuItems';
 import CustomMenuBanner from '../components/CustomMenuBanner';
 import NewsletterBanner from '../../newsletter/components/NewsletterBanner';
 
-const API_BASE_URL = 'http://10.120.172.52:8000/api/v1'; 
+import { API_BASE_URL } from '../../../config/api';
+
 
 export default function HomeScreen({ navigateTo }) {
     const [activeCategoryId, setActiveCategoryId] = useState('all'); 

@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-const API_BASE_URL = 'http://10.120.172.52:8000/api/v1';
+import { API_BASE_URL } from '../../../config/api';
 
 export default function CustomPackageScreen({ onBack }) {
 
